@@ -16,47 +16,47 @@ Practicing compassionate code reviews is important (you can learn more from this
 ## Base Required Features 
 
 - Multi-Part Form:  
-  - [ ] Able to add feedback
-    - [ ] Data collected on individual pages & components
-    - [ ] Click on next takes you to the next page in sequence
-    - [ ] Data saves in DB after *all* the parts are completed (not piecemeal)
-    - [ ] Thank you page takes you back to the first view
+  - [x] Able to add feedback
+    - [x] Data collected on individual pages & components
+    - [x] Click on next takes you to the next page in sequence
+    - [x] Data saves in DB after *all* the parts are completed (not piecemeal)
+    - [x] Thank you page takes you back to the first view
     - [ ] Old Data is cleared on form completion
 
 - Client code:
-  - [ ]  Individual components for each form part
+  - [x]  Individual components for each form part
   - [ ]  Redux setup complete
-    - [ ] Store linked to react with `<Provider>`
-    - [ ] Store setup with reducer(s) and logger middleware 
+    - [x] Store linked to react with `<Provider>`
+    - [x] Store setup with reducer(s) and logger middleware 
   - [ ] Reducers & Actions Working
-    - [ ] Actions are in SCREAMING_SNAKE_CASE and semantically named
-    - [ ] Actions have a `type` key, and `payload` if sending data
-    - [ ] Reducers are returning a new state, or the old state (not mutating)
-    - [ ] Reducers are using spread correctly (to keep old data, while adding new)
-  - [ ] Review Component shows at all times with current redux state
-  - [ ] React-Redux Working
-    - [ ] `connect`ing components correctly & dispatching Actions onClick
-    - [ ] `mapStateToProps` when data is needed from Redux for submission
-  - [ ] Axios POST request to add feedback
+    - [x] Actions are in SCREAMING_SNAKE_CASE and semantically named
+    - [x] Actions have a `type` key, and `payload` if sending data
+    - [x] Reducers are returning a new state, or the old state (not mutating)
+    - [x] Reducers are using spread correctly (to keep old data, while adding new)
+  - [x] Review Component shows at all times with current redux state
+  - [x] React-Redux Working
+    - [x] `connect`ing components correctly & dispatching Actions onClick
+    - [x] `mapStateToProps` when data is needed from Redux for submission
+  - [x] Axios POST request to add feedback
 
 
 - Server code:   
-  - [ ] Router made for GET, POST
+  - [x] Router made for GET, POST
 
 
 ## General Items
 Feedback should be provided for these items, but they do not impact scoring.
 
 - Git 
-  - [ ] Multiple git commits showing incremental progress
-  - [ ] Commits are descriptive of the changes made or feature added 
-  - [ ] Has .gitignore with node_modules
+  - [x] Multiple git commits showing incremental progress
+  - [x] Commits are descriptive of the changes made or feature added 
+  - [x] Has .gitignore with node_modules
   - [ ] Readme file updated (assuming this is previously discussed)
 - Code Style 
   - [ ] Appropriate amount of code comments
   - [ ] Code is consistently formatted
 - Client
-  - [ ] Appropriate use of HTML tags
+  - [x] Appropriate use of HTML tags
   - [ ] Basic CSS styling with margins/padding
 
 
@@ -88,20 +88,32 @@ First must be complete for score of _5 - Exceeds Expectations_
 ## Markdown
 
 ```
-Hey ___,
+Heya Paul,
 
 General Feedback.
 
 ---
 | Functional Requirements | Complete? |
-| --- | :---: |
-| Multi page form with client side routing and navigation (next button) | no |
-| Data stored in Redux when navigating from page to page | no |
+| The app does successfully guide you through until completion, and captures the user feedback. Good work there. Dropdowns are always fun, so thats cool! 
+
+| Multi page form with client side routing and navigation (next button) | yes |
+| Data stored in Redux when navigating from page to page | yes |
 | User is notified when trying to leave a blank score | no |
+
+  need to set up the dropdown with the constrains of only allowing feedback scores of 1-5 and disallowing a null score.  
+
 | Review Component displays scores and comments from current redux state | no |
+it also displays the previous score 
+
 | Submit button sends data to the server via Axios | no |
-| Confirmaion Page displays after data is POSTed to the server | no |
+the post request here is failing as you are posting 4 objects instead of one. you capture your scores, however they are each stored in a separate object. one way to solve this is creating an initial state object with keys of: feeling, understanding, support and comments.  you can create 4 different reducers for each that modify the correct key of state. you can also create one reducer for them all, but you have to find a way to combine the playload object with state without mutating. Check out Object assign in this link 
+
+![](https://redux.js.org/recipes/structuring-reducers/refactoring-reducer-example)
+
+
+| Confirmaion Page displays after data is POSTed to the server | yes |
 | Button on Confirmation Page clears Redux and starts a new survey | no |
+
 | Views are broken down into components | no |
 
 ---
@@ -113,11 +125,11 @@ Notes on the above Functional Requirements.
 | General Items | Complete? |
 | --- | :---: |
 | More than 15 git commits | no |
-| Commits are descriptive of the changes made or feature added | no |
+| Commits are descriptive of the changes made or feature added | yes |
 | Readme file updated | no |
 | Appropriate amount of code comments | no |
-| Code is consistently formatted | no |
-| Server code organized with router & module files | no |
+| Code is consistently formatted | mostly, needs commented out stuff removed |
+| Server code organized with router & module files | yes |
 
 ---
 ### Notes:
